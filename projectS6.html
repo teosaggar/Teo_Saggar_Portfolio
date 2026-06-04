@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>teosaggarportfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
     <header>
@@ -13,36 +14,96 @@
         </a>
         <div class="center">Écologie(s) Pavillonaire</div>
         <div class="right">
-            <div class="Projects">Projects</div>
-            <div class="Photo">Observation</div>
-            <div class="Index">Index</div>
+        <div class="Projects">
+            Projects
+            <div class="dropdown">
+                <a href="projectS6.html">Écologie(s) Pavillonaire</a>
+                <a href="projectS5.html">Cicatrisation d'un Paysage Ruiné</a>
+                <a href="projectS4.html">Les Formes de la Réhabilitation</a>
+            </div>
         </div>
+        <a href="photo.html">
+            <div class="Photo">Observation</div>
+        </a>
+        <div class="Index">Index</div>
+    </div>
+
+
     </header>
-    <section class="frise-S6">
-        <img src="Projets/S6/S6 frise 1.jpg" alt="Frise part 1">
-        <img src="Projets/S6/S6 frise 2.jpg" alt="Frise part 2">
-        <img src="Projets/S6/S6 frise 3.jpg" alt="Frise part 3">
-    </section>
+    <main class="page-layout">
+        <aside class="side-drawer closed" id="sideDrawer" aria-label="Panneau de texte">
+            <button class="drawer-handle" id="drawerHandle" aria-expanded="false" aria-controls="drawerContent">
+                ☰
+            </button>
+            <div class="drawer-content" id="drawerContent">
+                <div class="drawer-scroll">
+                    <!-- TITRE DU PROJET en haut de la bande -->
+                    <h2 class="drawer-project-title">Écologie(s) Pavillonaire</h2>
+                    <p>
+                        This project takes place in the Marais district of Villepinte, a suburban neighborhood located between the A104 motorway and the wooded grounds of the former sanatorium. The design process began with a territorial survey focused on climate, ecology, and infrastructure. This investigation revealed a landscape shaped by multiple forms of dependency: on technical networks, transportation systems, and surrounding ecosystems. Behind the image of the detached house as an independent unit lies a complex web of relationships between inhabitants, resources, landscapes, and services.
 
-    <section class="presentations-projects">
-        <section class="presentation-projects1">
-            <img src="Projets/S6/Maquette S62.jpg" alt="Maquette du projet S6 en plan">
-            <img src="Projets/S6/S6 Insta.jpg" alt="Planche dessinée de l'atelier">
-            <img src="Projets/S6/S6 Insta 7.jpg" alt="Planche dessinée de la cuisnie1">
-            <img src="Projets/S6/S6 Insta 8.jpg" alt="Planche dessinée de la cuisine2">
-            <img src="Projets/S6/S6 Insta 4.jpg" alt="Planche dessinée de la buanderie">
+Interviews conducted with residents highlighted a paradox. Despite facing issues such as rising energy costs, limited living space, flood-prone soils, and dependence on the car, most inhabitants expressed a strong attachment to their homes. Gardens, DIY construction, domestic improvements, and neighborhood relationships all contribute to a deep sense of belonging. The project therefore emerged from a central question: how can this neighborhood evolve without undermining the qualities that make it meaningful to its residents?
+
+Rather than intervening directly within private properties, the proposal works through vacant, abandoned, or underused plots scattered throughout the neighborhood. These sites host a series of collective facilities designed in response to needs identified during the interviews: a workshop, a greenhouse, a shared kitchen, a laundry house, a children’s house, and a workspace. These programs provide new shared amenities while also serving as demonstrations of architectural strategies that could later be adapted to individual homes.
+
+The workshop acts as the starting point of the project. Conceived as a place for sharing tools, materials, and practical knowledge, it supports residents in maintaining and improving their homes. It also enables the construction of small-scale interventions such as rainwater harvesting systems and water-management devices. The collective greenhouse extends this approach by creating a space for gardening, learning, and exchange, while experimenting with bioclimatic loggias that can be adapted to existing houses to improve thermal comfort.
+
+The different programs are connected through a broader reflection on local resources. Rainwater is collected, stored, and infiltrated through swales and rain gardens; reclaimed materials are reused; tools, equipment, and knowledge are shared. Through these strategies, the project seeks to reduce certain forms of dependency while strengthening social ties within the neighborhood.
+
+Rather than proposing a radical transformation of the suburban fabric, the project imagines a gradual evolution based on choice, experimentation, and collective action. By building upon existing practices and forms of appropriation, it explores how individual housing can be complemented by shared spaces, fostering a more resilient and interconnected way of living.
+
+                    </p>
+                </div>
+            </div>
+        </aside>
+
+        <section class="images-panel project-images-panel" aria-label="Zone images">
+            <section class="frise-S6">
+                <img src="Projets/S6/S6 frise 1.jpg" alt="Frise part 1">
+                <img src="Projets/S6/S6 frise 2.jpg" alt="Frise part 2">
+                <img src="Projets/S6/S6 frise 3.jpg" alt="Frise part 3">
+            </section>
+
+            <section class="presentations-projects">
+                <section class="presentation-projects1">
+                    <img src="Projets/S6/Maquette S62.jpg" alt="Maquette du projet S6 en plan">
+                    <img src="Projets/S6/S6 Insta.jpg" alt="Planche dessinée de l'atelier">
+                    <img src="Projets/S6/S6 Insta 7.jpg" alt="Planche dessinée de la cuisnie1">
+                    <img src="Projets/S6/S6 Insta 8.jpg" alt="Planche dessinée de la cuisine2">
+                    <img src="Projets/S6/S6 Insta 4.jpg" alt="Planche dessinée de la buanderie">
+                </section>
+
+                <section class="presentation-projects2">
+                    <img src="Projets/S6/Maquette S63.jpg" alt="Maquette du projet S6 de face">
+                    <img src="Projets/S6/S6 Insta 5.jpg" alt="Planche dessinée de la cuisine exterieur">
+                    <img src="Projets/S6/S6 Insta 10.jpg" alt="Planche dessinée de la serre1">
+                    <img src="Projets/S6/S6 Insta 6.jpg" alt="Planche dessinée de la serre2">
+                </section>
+            </section>
         </section>
+    </main>
+    <div id="solar-widget">
+        <svg id="solar-svg" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+            <g id="solar-grid-arcs"></g>
+            <g id="solar-grid-spokes"></g>
+            <line id="solar-horizon" x1="30" y1="155" x2="290" y2="155" stroke-width="1"/>
+            <text id="solar-lbl-e" x="30"  y="168" text-anchor="middle" font-family="Garamond, serif" font-size="11">E</text>
+            <text id="solar-lbl-s" x="160" y="168" text-anchor="middle" font-family="Garamond, serif" font-size="11">S</text>
+            <text id="solar-lbl-w" x="290" y="168" text-anchor="middle" font-family="Garamond, serif" font-size="11">W</text>
+            <path id="solar-path" fill="none" stroke-width="1"/>
+            <circle id="solar-dot" class="sky-dot" cx="160" cy="155" r="0"><title>sun</title></circle>
+            <text id="solar-dot-label" class="sky-dot-label">sun</text>
+            <circle id="moon-dot" class="sky-dot" cx="160" cy="155" r="0"><title>moon</title></circle>
+            <text id="moon-dot-label" class="sky-dot-label">moon</text>
+            <text id="solar-time" x="160" y="188" text-anchor="middle" font-family="Garamond, serif" font-size="13"></text>
+            <text id="solar-alt"  x="160" y="202" text-anchor="middle" font-family="Garamond, serif" font-size="11"></text>
+            <text id="solar-az"   x="160" y="214" text-anchor="middle" font-family="Garamond, serif" font-size="11"></text>
+            <text id="solar-moon-alt" x="160" y="226" text-anchor="middle" font-family="Garamond, serif" font-size="10" visibility="hidden"></text>
+            <text id="solar-moon-az"  x="160" y="238" text-anchor="middle" font-family="Garamond, serif" font-size="10" visibility="hidden"></text>
+        </svg>
+    </div>
 
-        <section class="presentation-projects2">
-            <img src="Projets/S6/Maquette S63.jpg" alt="Maquette du projet S6 de face">
-            <img src="Projets/S6/S6 Insta 5.jpg" alt="Planche dessinée de la cuisine exterieur">
-            <img src="Projets/S6/S6 Insta 10.jpg" alt="Planche dessinée de la serre1">
-            <img src="Projets/S6/S6 Insta 6.jpg" alt="Planche dessinée de la serre2">
-        </section>
-    </section>
-
-
-
-
-
+    <script src="solar.js"></script>
+    <script src="script.js"></script>
 </body>
+</html>

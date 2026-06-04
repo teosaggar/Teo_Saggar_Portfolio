@@ -5,73 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>teosaggarportfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
-<body>
+<body class="home-page">
     <header>
         <a href="index.html">
             <div class="left">Téo SAGGAR</div>
         </a>
         <div class="center">Homepage</div>
         <div class="right">
-        <div class="Projects">
-            Projects
-            <div class="dropdown">
-                <a href="projectS6.html">Écologie(s) Pavillonaire</a>
-                <a href="projectS5.html">Cicatrisation d'un Paysage Ruiné</a>
-                <a href="projectS4.html">Les Formes de la Réhabilitation</a>
+            <div class="Projects">
+                Projects
+                <div class="dropdown">
+                    <a href="projectS6.html">Écologie(s) Pavillonaire</a>
+                    <a href="projectS5.html">Cicatrisation d'un Paysage Ruiné</a>
+                    <a href="projectS4.html">Les Formes de la Réhabilitation</a>
+                </div>
             </div>
+            <a href="photo.html">
+                <div class="Photo">Observation</div>
+            </a>
+            <div class="Index">Index</div>
         </div>
-        <div class="Photo">Observation</div>
-        <div class="Index">Index</div>
-    </div>
-
-
     </header>
-
-    <main>
-
-        <section class="image-zone1">
-        <img src="Photos/Dome mosquée bagdad.JPG" alt="Photos d'un Dôme de mosquée">
+ 
+    <main class="page-layout">
+ 
+        <!-- ================================================
+             BANDE TIRABLE GAUCHE
+             Pas de titre sur la page d'accueil (demande 2)
+        ================================================ -->
+        <aside class="side-drawer closed" id="sideDrawer" aria-label="Panneau de texte">
+            <button class="drawer-handle" id="drawerHandle" aria-expanded="false" aria-controls="drawerContent">
+                ☰
+            </button>
+            <div class="drawer-content" id="drawerContent">
+                <div class="drawer-scroll">
+                    <!-- Pas de titre ici : page d'accueil -->
+                    <p>
+                        The aim of this portfolio is to give you an overview of what I've been able to learn during
+                        my first seven semesters of architecture studies. I hope you enjoy browsing through it.
+                        Each of the projects selected here was realized with great enthusiasm.
+                        The accompanying texts are intended to clarify my approach.
+                        These last few years have greatly nourished my interest in the world,
+                        and these studies have encouraged me to discover, to interest myself and to experiment.
+                    </p>
+                </div>
+            </div>
+        </aside>
+ 
+        <!-- ================================================
+             ZONE IMAGES DROITE
+             - Première photo SUPPRIMÉE (demande accueil)
+             - Deuxième photo remontée, cliquable → photo.html
+        ================================================ -->
+        <section class="images-panel" aria-label="Zone images">
+            <section class="image-zone2">
+                <!-- CLIQUABLE → page Observation -->
+                <a href="photo.html">
+                    <img src="Photos/Porte moitié peinte mossoul.JPG" alt="Photos évoquant le changement">
+                </a>
+            </section>
+        </section>
+ 
+    </main>
+ 
+    <!-- Previews des projets -->
+    <section class="project-preview-S6">
+        <a href="projectS6.html">
+            <img src="Projets/S6/PDG S6 Insta.jpg" alt="Projet S6">
+        </a>
     </section>
-
-    <section class="text-zone">
-        <p>The aim of this portfolio is to give you an overview of what I've been able to learn during 
-my first seven semesters of architecture studies. I hope you enjoy browsing through it. 
-Each of the projects selected here was realized with great enthusiasm. 
-The accompanying texts are intended to clarify my approach. 
-These last few years have greatly nourished my interest in the 
-world, and these studies have encouraged me to discover, to interest myself and to experiment.</p>
+ 
+    <section class="project-preview-S5">
+        <a href="projectS5.html">
+            <img src="Projets/S5/Sans titre-20.jpg" alt="Projet S5">
+        </a>
     </section>
-
-    <section class="image-zone2">
-        <img src="Photos/Porte moitié peinte mossoul.JPG" alt="Photos évoquant le changement">
+ 
+    <section class="project-preview-S4">
+        <a href="projectS4.html">
+            <img src="Projets/S4/S4 Insta PDG.jpg" alt="Projet S4">
+        </a>
     </section>
-</main>
-
-
-
-<section class="project-preview-S6">
-    <a href="projectS6.html">
-        <img src="Projets/S6/PDG S6 Insta.jpg" alt="Projet S6">
-    </a>
-</section>
-
-
-
-
-<section class="project-preview-S5">
-    <a href="projectS5.html">
-        <img src="Projets/S5/Sans titre-20.jpg" alt="Projet S5">
-    </a>
-</section>
-
-<section class="project-preview-S4">
-    <a href="projectS4.html">
-        <img src="Projets/S4/S4 Insta PDG.jpg" alt="Projet S4">
-    </a>
-</section>
-
-
-
+ 
+    <!-- Widget solaire -->
+    <div id="solar-widget">
+        <svg id="solar-svg" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+            <g id="solar-grid-arcs"></g>
+            <g id="solar-grid-spokes"></g>
+            <line id="solar-horizon" x1="30" y1="155" x2="290" y2="155" stroke-width="1"/>
+            <text id="solar-lbl-e" x="30"  y="168" text-anchor="middle" font-family="Garamond, serif" font-size="11">E</text>
+            <text id="solar-lbl-s" x="160" y="168" text-anchor="middle" font-family="Garamond, serif" font-size="11">S</text>
+            <text id="solar-lbl-w" x="290" y="168" text-anchor="middle" font-family="Garamond, serif" font-size="11">W</text>
+            <path id="solar-path" fill="none" stroke-width="1"/>
+            <circle id="solar-dot" class="sky-dot" cx="160" cy="155" r="0"><title>sun</title></circle>
+            <text id="solar-dot-label" class="sky-dot-label">sun</text>
+            <circle id="moon-dot" class="sky-dot" cx="160" cy="155" r="0"><title>moon</title></circle>
+            <text id="moon-dot-label" class="sky-dot-label">moon</text>
+            <text id="solar-time" x="160" y="188" text-anchor="middle" font-family="Garamond, serif" font-size="13"></text>
+            <text id="solar-alt"  x="160" y="202" text-anchor="middle" font-family="Garamond, serif" font-size="11"></text>
+            <text id="solar-az"   x="160" y="214" text-anchor="middle" font-family="Garamond, serif" font-size="11"></text>
+            <text id="solar-moon-alt" x="160" y="226" text-anchor="middle" font-family="Garamond, serif" font-size="10" visibility="hidden"></text>
+            <text id="solar-moon-az"  x="160" y="238" text-anchor="middle" font-family="Garamond, serif" font-size="10" visibility="hidden"></text>
+        </svg>
+    </div>
+ 
+    <script src="solar.js"></script>
+    <script src="script.js"></script>
 </body>
-</html>  
+</html>

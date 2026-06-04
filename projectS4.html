@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>teosaggarportfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
     <header>
@@ -13,27 +14,108 @@
         </a>
         <div class="center">Les Formes de la Réhabilitation</div>
         <div class="right">
-            <div class="Projects">Projects</div>
-            <div class="Photo">Observation</div>
+            <div class="Projects">
+                Projects
+                <div class="dropdown">
+                    <a href="projectS6.html">Écologie(s) Pavillonaire</a>
+                    <a href="projectS5.html">Cicatrisation d'un Paysage Ruiné</a>
+                    <a href="projectS4.html">Les Formes de la Réhabilitation</a>
+                </div>
+            </div>
+            <a href="photo.html">
+                <div class="Photo">Observation</div>
+            </a>
             <div class="Index">Index</div>
         </div>
     </header>
+ 
+    <main class="page-layout">
 
-    <section class="frise-S4">
-        <img src="Projets/S4/S4 Insta CP1.jpg" alt="Maquette après destruction">
-        <img src="Projets/S4/S4 Insta CP2.jpg" alt="Maquette après destruction">
-    </section>
-
-    <section class="presentations-projects">
-        <section class="presentation-projects1">
-            <img src="Projets/S4/S4 Insta Plan.jpg" alt="Plan du projet S4">
-            <img src="Projets/S4/S4 Insta Maquette Jules.jpg" alt="Maquette du café du projet S4">
+        <aside class="side-drawer closed" id="sideDrawer" aria-label="Panneau de texte">
+            <button class="drawer-handle" id="drawerHandle" aria-expanded="false" aria-controls="drawerContent">
+                ☰
+            </button>
+            <div class="drawer-content" id="drawerContent">
+                <div class="drawer-scroll">
+                    <!-- TITRE DU PROJET en haut de la bande -->
+                    <h2 class="drawer-project-title">Les Formes de la Réhabilitation</h2>
+                    <p>
+                        The initial site consists of two distinct plots. The first plot is
+                        located at the intersection of two departmental roads and contains
+                        a 1970s cubic building housing a community center with a concrete
+                        outdoor space. The second plot
+                        consists of a private house built with flint stone,
+                        featuring a garden and an outbuilding. The
+                        two plots are separated by a street, with a flint
+                        wall marking the boundary of the house plot.
+                        For this project, my first intention was to unify
+                        these two plots by deconstructing the flint wall,
+                        pedestrianizing the street that separates them,
+                        and retaining only the ground floor structure
+                        of the community center. These interventions
+                        provide views throughout the site and facilitate
+                        circulation.
+                        To address the lack of public green spaces nearby, a large portion of
+                        the built ground was re-naturalized. The planting of trees across the plots helps to isolate
+                        the site from the surrounding roads.
+                        The program, proposed by the professor, was integrated into the existing structure as well as
+                        in new, punctual constructions designed to blend
+                        into their environment through curved forms.
+                        The architectural styles and materials used aim to
+                        make each space unique. The convex roofs of the
+                        covered walkway and café break the orthogonal
+                        geometry of the community center. The post-and-beam structure added to the community center,
+                        like a new skin, extends the first floor with an outdoor space. It also provides shade to an interior
+                        exposed to the sun from both the north and south.
+                    </p>
+                </div>
+            </div>
+        </aside>
+ 
+        <!-- Zone images droite -->
+        <section class="images-panel project-images-panel" aria-label="Zone images">
+            <section class="frise-S4">
+                <img src="Projets/S4/S4 Insta CP1.jpg" alt="Maquette après destruction">
+                <img src="Projets/S4/S4 Insta CP2.jpg" alt="Maquette après destruction">
+            </section>
+ 
+            <section class="presentations-projects">
+                <section class="presentation-projects1">
+                    <img src="Projets/S4/S4 Insta Plan.jpg" alt="Plan du projet S4">
+                    <img src="Projets/S4/S4 Insta Maquette Jules.jpg" alt="Maquette du café du projet S4">
+                </section>
+                <section class="presentation-projects2">
+                    <img src="Projets/S4/S4 insta Maquette Site.jpg" alt="Maquette de site du projet S4">
+                    <img src="Projets/S4/S4 Insta Maquette Téo.jpg" alt="Maquette de la MJC du projet S4">
+                </section>
+            </section>
         </section>
-
-        <section class="presentation-projects2">
-            <img src="Projets/S4/S4 insta Maquette Site.jpg" alt="Maquette de site du projet S4">
-            <img src="Projets/S4/S4 Insta Maquette Téo.jpg" alt="Maquette de la MJC du projet S4">
-        </section>
-    </section>
-
+ 
+    </main>
+ 
+    <!-- Widget solaire -->
+    <div id="solar-widget">
+        <svg id="solar-svg" viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">
+            <g id="solar-grid-arcs"></g>
+            <g id="solar-grid-spokes"></g>
+            <line id="solar-horizon" x1="30" y1="155" x2="290" y2="155" stroke-width="1"/>
+            <text id="solar-lbl-e" x="30"  y="168" text-anchor="middle" font-family="Garamond, serif" font-size="11">E</text>
+            <text id="solar-lbl-s" x="160" y="168" text-anchor="middle" font-family="Garamond, serif" font-size="11">S</text>
+            <text id="solar-lbl-w" x="290" y="168" text-anchor="middle" font-family="Garamond, serif" font-size="11">W</text>
+            <path id="solar-path" fill="none" stroke-width="1"/>
+            <circle id="solar-dot" class="sky-dot" cx="160" cy="155" r="0"><title>sun</title></circle>
+            <text id="solar-dot-label" class="sky-dot-label">sun</text>
+            <circle id="moon-dot" class="sky-dot" cx="160" cy="155" r="0"><title>moon</title></circle>
+            <text id="moon-dot-label" class="sky-dot-label">moon</text>
+            <text id="solar-time" x="160" y="188" text-anchor="middle" font-family="Garamond, serif" font-size="13"></text>
+            <text id="solar-alt"  x="160" y="202" text-anchor="middle" font-family="Garamond, serif" font-size="11"></text>
+            <text id="solar-az"   x="160" y="214" text-anchor="middle" font-family="Garamond, serif" font-size="11"></text>
+            <text id="solar-moon-alt" x="160" y="226" text-anchor="middle" font-family="Garamond, serif" font-size="10" visibility="hidden"></text>
+            <text id="solar-moon-az"  x="160" y="238" text-anchor="middle" font-family="Garamond, serif" font-size="10" visibility="hidden"></text>
+        </svg>
+    </div>
+ 
+    <script src="solar.js"></script>
+    <script src="script.js"></script>
 </body>
+</html>

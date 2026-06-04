@@ -1,48 +1,61 @@
 body {
     margin: 0;
-    background-color: rgb(193, 146, 58);
+    transition: background-color 3s ease;
+    background-color: #ffffff;
+    color: #111;
+    cursor: default;
 }
-
-/*Header*/
+ 
+/* Curseur étoile */
+:root {
+    --cursor-star: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cline x1='16' y1='2' x2='16' y2='30' stroke='%23000' stroke-width='1.2'/%3E%3Cline x1='2' y1='16' x2='30' y2='16' stroke='%23000' stroke-width='1.2'/%3E%3Cline x1='6.1' y1='6.1' x2='25.9' y2='25.9' stroke='%23000' stroke-width='1.2'/%3E%3Cline x1='25.9' y1='6.1' x2='6.1' y2='25.9' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E") 16 16, crosshair;
+}
+ 
+a,
+button,
+.Projects,
+.drawer-handle,
+.left,
+.project-preview-S6 a,
+.project-preview-S5 a,
+.project-preview-S4 a {
+    cursor: var(--cursor-star);
+}
+ 
+/* ============================================================
+   HEADER
+============================================================ */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 80px;
-
     background-color: rgb(255, 250, 246);
-
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
-
     padding: 0 5%;
-
     box-sizing: border-box;
-    box-shadow: 0px 6px 16px rgba(160, 70, 0, 0.35);
-
+    box-shadow: 0px 6px 16px rgba(162, 70, 0, 0.35);
 }
-
+ 
 a {
-  text-decoration: none; 
-  color: inherit;      
+    text-decoration: none;
+    color: inherit;
 }
-
+ 
 .left {
     font-size: 20px;
     font-family: Garamond, serif;
-
-    cursor: pointer;
     transition: transform 0.4s ease, opacity 0.4s ease;
-
 }
 .left:hover {
     transform: scale(1.06);
     opacity: 0.9;
 }
-
+ 
 .center {
     font-size: 26px;
     font-family: Garamond, serif;
@@ -50,7 +63,7 @@ a {
     left: 50%;
     transform: translateX(-50%);
 }
-
+ 
 .right {
     font-size: 16px;
     font-family: Garamond, serif;
@@ -58,275 +71,578 @@ a {
     display: flex;
     gap: 18px;
 }
-
-
-/*Dropdown Projects*/
+ 
+/* ============================================================
+   DROPDOWN PROJECTS
+============================================================ */
 .Projects {
     position: relative;
-    cursor: pointer;
     display: inline-block;
 }
-
-
+ 
 .dropdown {
     display: none;
     position: absolute;
-    top: 100%;            /* juste en dessous de "Projects" */
+    top: 100%;
     left: 0;
     right: 0;
     min-width: 200px;
-    background-color:  rgb(255, 250, 246);
+    background-color: rgb(255, 250, 246);
     border: 1px solid #ccc;
     flex-direction: column;
     z-index: 1000;
 }
-
-/* Liens du menu */
+ 
 .dropdown a {
     padding: 10px;
     text-decoration: none;
     color: black;
     display: block;
 }
-
+ 
 .dropdown a:hover {
     background-color: #f0f0f0;
     display: flex;
 }
-
-/* Affichage au survol */
+ 
 .Projects:hover .dropdown {
     display: flex;
 }
-
-
-
-
-
-
-/*Acceuil*/
-main {
-    display: flex;
-    height: 100vh;
-    padding-top: 20px;
-    align-items: stretch;
+ 
+/* ============================================================
+   LAYOUT PRINCIPAL
+============================================================ */
+.page-layout {
     position: relative;
-    z-index: 1;
-    padding: 0 5%;
+    min-height: calc(100vh - 80px);
+    margin-top: 80px;
+    overflow: visible;
 }
-
-.image-zone1 {
-    width: 35%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-zone1 img {
-    width: 70%;
-    max-width: 650px;
-    max-height: 65vh;
-    width: auto;
-    height: auto;
-}
-
-.text-zone {
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 0 70px;
-    box-sizing: border-box;
-    position: relative;
-    z-index: 2;
-}
-
-.text-zone p {
-    text-align: justify;
-    line-height: 1.5;
-    max-width: 500px;
-    max-height: 65vh;
+ 
+/* ============================================================
+   BANDE TIRABLE (DRAWER)
+   MODIFICATION 1 : poignée remontée (top: 30% au lieu de 50%)
+   MODIFICATION 3 : scroll étendu avec padding-bottom généreux
+                    pour pouvoir remonter le texte au-dessus du diagramme
+   MODIFICATION 4 : padding gauche/droite augmenté pour plus d'aération
+============================================================ */
+.side-drawer {
+    position: fixed;
+    top: 80px;
+    left: 0;
+ 
+    /* MODIFICATION 3 : hauteur étendue au-delà de l'écran pour scroller vers le haut */
+    height: calc(100vh - 80px);
+    overflow: visible; /* permet à drawer-content de dépasser si besoin */
+ 
+    width: 30vw;
     min-width: 300px;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.82);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 6px 0 18px rgba(0, 0, 0, 0.18);
+    transform: translateX(calc(-100% + 16px));
+    transition: transform 0.35s ease;
+    z-index: 120;
 }
-
+ 
+.side-drawer.open {
+    transform: translateX(0);
+}
+ 
+/* MODIFICATION 1 : poignée remontée — top: 30% au lieu de 50% */
+.drawer-handle {
+    position: absolute;
+    top: 30%;                          /* ← REMONTÉ (était 50%) */
+    right: -32px;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 90px;
+    border: none;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.22);
+    font-size: 18px;
+    line-height: 1;
+}
+ 
+.drawer-content {
+    height: 100%;
+    /* MODIFICATION 4 : padding horizontal augmenté pour aérer le texte */
+    padding: 28px 36px 26px 36px;      /* ← ÉTAIT: 28px 22px 26px 24px */
+    box-sizing: border-box;
+}
+ 
+/* MODIFICATION 3 : padding-bottom très généreux pour pouvoir scroller
+   le texte vers le haut, au-dessus du diagramme solaire */
+.drawer-scroll {
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 6px;
+    padding-bottom: 320px;             /* ← NOUVEAU : espace sous le texte */
+}
+ 
+.drawer-scroll,
+.drawer-scroll p {
+    font-family: Garamond, serif;
+    font-size: 14px;
+}
+ 
+.drawer-scroll p {
+    margin: 0;
+    line-height: 1.6;
+    text-align: justify;
+}
+ 
+/* MODIFICATION 2 : titre du projet en haut de la bande (pages projet) */
+.drawer-project-title {
+    font-family: Garamond, serif;
+    font-size: 18px;                   /* légèrement plus grand que le corps (14px) */
+    font-weight: normal;               /* Garamond reste léger, pas de gras agressif */
+    margin: 0 0 20px 0;               /* espace sous le titre avant le texte */
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+}
+ 
+/* ============================================================
+   ZONE IMAGES DROITE
+============================================================ */
+.images-panel {
+    margin-left: 40px;
+    min-height: calc(100vh - 80px);
+    overflow: visible;
+    padding: 20px 5% 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+}
+ 
+/* Page accueil : une seule image, centrée verticalement */
+.image-zone1,
 .image-zone2 {
-    width: 35%;
+    width: 100%;
+    min-height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    z-index: 1;
 }
-
+ 
+/* L'image d'accueil est cliquable */
+.image-zone2 a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.image-zone1 img,
 .image-zone2 img {
-    width: 60%;
-    max-width: 650px;
-    max-height: 65vh;
+    max-width: min(900px, 90%);
+    max-height: 75vh;
     width: auto;
     height: auto;
 }
-
-
-/*Projet S6*/
+ 
+/* Responsive */
+@media (max-width: 900px) {
+    .side-drawer {
+        width: 78vw;
+        min-width: 0;
+        max-width: none;
+    }
+    .images-panel {
+        padding: 16px 4% 32px;
+    }
+}
+ 
+/* ============================================================
+   PREVIEWS PROJETS (page accueil)
+============================================================ */
 .project-preview-S6 {
-    height: 80vh; 
+    height: 80vh;
     display: flex;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;
     box-sizing: border-box;
 }
-
 .project-preview-S6 img {
-    width: 100%; 
+    width: 100%;
     max-width: 500px;
     height: auto;
-
-    cursor: pointer;
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
-
-/* petit effet au hover */
 .project-preview-S6 img:hover {
     transform: scale(1.02);
     opacity: 0.9;
     box-shadow: 0px 8px 20px rgba(160, 70, 0, 0.35);
 }
-
-
-
-/*Projet S5*/
+ 
 .project-preview-S5 {
-    height: 80vh; 
+    height: 80vh;
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     box-sizing: border-box;
 }
-
 .project-preview-S5 img {
-    width: 100%; 
+    width: 100%;
     max-width: 500px;
     height: auto;
-
-    cursor: pointer;
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
-
-/* petit effet au hover */
 .project-preview-S5 img:hover {
     transform: scale(1.02);
     opacity: 0.9;
     box-shadow: 0px 8px 20px rgba(160, 70, 0, 0.35);
 }
-
-
-
-/*Projet S4*/
+ 
 .project-preview-S4 {
-    height: 80vh; 
+    height: 80vh;
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     box-sizing: border-box;
 }
-
 .project-preview-S4 img {
-    width: 100%; 
+    width: 100%;
     max-width: 500px;
     height: auto;
-
-    cursor: pointer;
     transition: transform 0.4s ease, opacity 0.4s ease;
 }
-
-/* petit effet au hover */
 .project-preview-S4 img:hover {
     transform: scale(1.02);
     opacity: 0.9;
     box-shadow: 0px 8px 20px rgba(160, 70, 0, 0.35);
 }
-
-
-
-
-
-/*Page projet S6*/
+ 
+/* ============================================================
+   PAGES PROJET — frises et galeries
+============================================================ */
+ 
+/* Projet S6 */
 .frise-S6 {
     display: flex;
     justify-content: center;
-    align-items: center; 
-    gap: 0;  
-    padding: 20px 5%;   
+    align-items: center;
+    gap: 0;
+    padding: 20px 5%;
     box-sizing: border-box;
     height: 70vh;
 }
-
 .frise-S6 img {
-    aspect-ratio: 5 / 3;       /* force le ratio 5:3 */
-    width: calc(100% / 3); 
-    object-fit: cover;         /* garde le ratio sans déformation */
+    aspect-ratio: 5 / 3;
+    width: calc(100% / 3);
+    object-fit: cover;
 }
-
-
-
-/*Page projet S5*/
+ 
+/* Projet S5 */
 .frise-S5 {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
-    gap: 5px;  
-    padding: 20px 5%;   
+    align-items: center;
+    gap: 5px;
+    padding: 20px 5%;
     box-sizing: border-box;
     height: 80vh;
 }
-
 .frise-S5 img {
-    width: calc(30%); 
+    width: calc(30%);
 }
-
-
-/*Page projet S4*/
+ 
+/* Projet S4 */
 .frise-S4 {
     display: flex;
     justify-content: center;
-    align-items: center; 
-    gap: 0;  
-    padding: 20px 5%;   
+    align-items: center;
+    gap: 0;
+    padding: 20px 5%;
     box-sizing: border-box;
     height: 80vh;
 }
-
 .frise-S4 img {
-    aspect-ratio: 5 / 3;       /* force le ratio 5:3 */
-    width: calc(45%); 
-    object-fit: cover;         /* garde le ratio sans déformation */
+    aspect-ratio: 5 / 3;
+    width: calc(45%);
+    object-fit: cover;
 }
-
-
-
-/*Presentations de projets*/
+ 
+/* Présentations projets (colonnes) */
 .presentations-projects {
-    display: flex;              
-    justify-content: center;    
-    gap: 100px;                 
-    padding: 20px 5%;             
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    padding: 20px 5%;
     box-sizing: border-box;
 }
-
-
+ 
 .presentation-projects1,
 .presentation-projects2 {
-    flex: 1;                    /* chaque colonne prend la même largeur */
+    flex: 1;
     display: flex;
-    flex-direction: column;     
+    flex-direction: column;
     gap: 20px;
 }
-
-
+ 
 .presentation-projects1 img,
 .presentation-projects2 img {
-    width: 100%;                /* chaque image occupe toute la largeur de sa colonne */
+    width: 100%;
     height: auto;
-    object-fit: cover;          /* garde le ratio sans déformation */
+    object-fit: cover;
+}
+ 
+.images-panel.project-images-panel {
+    padding: 0;
+    gap: 80px;
+}
+ 
+/* ============================================================
+   WIDGET SOLAIRE
+============================================================ */
+#solar-widget {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 9999;
+    pointer-events: none;
+    width: 270px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+ 
+#solar-svg {
+    width: 270px;
+    height: 200px;
+    display: block;
+}
+ 
+#solar-svg .sky-dot {
+    pointer-events: all;
+    cursor: default;
+}
+ 
+#solar-svg .sky-dot[r="0"] {
+    pointer-events: none;
+}
+ 
+.sky-dot-label {
+    visibility: hidden;
+    pointer-events: none;
+    font-family: Garamond, serif;
+    font-size: 11px;
+    text-anchor: middle;
+    fill: rgba(30, 20, 5, 0.9);
+}
+ 
+#solar-dot:hover + #solar-dot-label,
+#moon-dot:hover + #moon-dot-label {
+    visibility: visible;
+}
+ 
+#solarData {
+    margin-top: 6px;
+    font-family: Garamond, serif;
+    font-size: 11px;
+    text-align: center;
+    line-height: 1.3;
+    color: black;
+}
+ 
+ 
+/* ------------------------------------------------------------
+   TABLETTE : 600px – 1100px
+------------------------------------------------------------ */
+@media (max-width: 1100px) {
+ 
+  
+    .center {
+        font-size: 20px;
+    }
+ 
+
+    .right {
+        gap: 12px;
+        font-size: 14px;
+    }
+ 
+  
+    .side-drawer {
+        width: 38vw;
+        min-width: 260px;
+    }
+ 
+
+    .frise-S4,
+    .frise-S5,
+    .frise-S6 {
+        height: 50vh;
+    }
+ 
+
+    .presentations-projects {
+        gap: 40px;
+    }
+ 
+  
+    .project-preview-S6,
+    .project-preview-S5,
+    .project-preview-S4 {
+        height: 60vh;
+    }
+}
+ 
+ 
+/* ------------------------------------------------------------
+   MOBILE : < 600px
+   
+------------------------------------------------------------ */
+@media (max-width: 600px) {
+ 
+    /* Header : empile le menu ou le simplifie */
+    header {
+        padding: 0 4%;
+        height: 60px;
+    }
+ 
+    .left {
+        font-size: 15px;
+    }
+ 
+   
+    .center {
+        display: none;
+    }
+ 
+    .right {
+        font-size: 13px;
+        gap: 10px;
+    }
+ 
+    
+    .page-layout {
+        margin-top: 60px; 
+    }
+ 
+
+    .side-drawer {
+        width: 80vw;
+        min-width: 0;
+        max-width: none;
+        top: 60px;
+        height: calc(100vh - 60px);
+    }
+ 
+  
+    .drawer-handle {
+        width: 28px;
+        height: 70px;
+        font-size: 15px;
+        right: -28px;
+    }
+ 
+
+    .images-panel {
+        margin-left: 20px;
+        padding: 10px 4% 30px;
+        gap: 40px;
+    }
+ 
+  
+    .image-zone1,
+    .image-zone2 {
+        min-height: 45vh;
+    }
+ 
+    .image-zone1 img,
+    .image-zone2 img {
+        max-height: 45vh;
+    }
+ 
+
+    .frise-S4,
+    .frise-S6 {
+        flex-direction: column;
+        height: auto;
+        gap: 8px;
+        padding: 10px 4%;
+    }
+ 
+    .frise-S4 img,
+    .frise-S6 img {
+        width: 100%;      
+        aspect-ratio: auto;
+    }
+ 
+    .frise-S5 {
+        flex-direction: column;
+        height: auto;
+        gap: 8px;
+        padding: 10px 4%;
+    }
+ 
+    .frise-S5 img {
+        width: 90%;
+    }
+ 
+
+    .presentations-projects {
+        flex-direction: column;
+        gap: 16px;
+        padding: 10px 4%;
+    }
+
+    .project-preview-S6,
+    .project-preview-S5,
+    .project-preview-S4 {
+        height: auto;
+        padding: 30px 0;
+    }
+ 
+    .project-preview-S6 img,
+    .project-preview-S5 img,
+    .project-preview-S4 img {
+        max-width: 85vw;
+    }
+ 
+
+    #solar-widget {
+        width: 180px;
+        bottom: 10px;
+        left: 10px;
+    }
+ 
+    #solar-svg {
+        width: 180px;
+        height: 135px;
+    }
+}
+ 
+ 
+/* ------------------------------------------------------------
+   TRÈS GRAND ÉCRAN : > 1600px
+------------------------------------------------------------ */
+@media (min-width: 1600px) {
+ 
+    .center {
+        font-size: 30px;
+    }
+ 
+    .left {
+        font-size: 24px;
+    }
+ 
+    .right {
+        font-size: 18px;
+        gap: 24px;
+    }
+ 
+   
+    .side-drawer {
+        max-width: 420px;
+    }
+ 
+  
+    .project-preview-S6 img,
+    .project-preview-S5 img,
+    .project-preview-S4 img {
+        max-width: 650px;
+    }
 }

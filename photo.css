@@ -1,0 +1,122 @@
+
+/* ------------------------------------------------------------
+   GRILLE MASONRY
+   column-count crée les colonnes.
+------------------------------------------------------------ */
+.masonry-grid {
+    column-count: 3;           /* 3 colonnes sur grand écran */
+    column-gap: 6px;           /* espace entre les colonnes */
+ 
+    padding: 100px 40px 80px;  /* 100px en haut pour passer sous le header fixe */
+    box-sizing: border-box;
+}
+ 
+ 
+.masonry-item {
+    display: inline-block;     /* obligatoire pour le masonry */
+    width: 100%;               /* prend toute la largeur de sa colonne */
+    margin: 0 0 6px 0;         /* espace entre les photos (même valeur que column-gap) */
+    padding: 0;                /* supprime le padding par défaut de <figure> */
+    break-inside: avoid;       /* ne coupe jamais une photo entre deux colonnes */
+    overflow: hidden;          /* cache les débordements lors du zoom au hover */
+    position: relative;        /* pour le curseur et les effets futurs */
+}
+ 
+.masonry-item img {
+    width: 100%;               /* pleine largeur de la colonne */
+    height: auto;              /* hauteur automatique : respecte les proportions */
+    display: block;            /* supprime l'espace blanc sous l'image */
+ 
+    /* Légère transition au survol */
+    transition: opacity 0.3s ease, transform 0.4s ease;
+}
+ 
+/* Effet au survol : légère luminosité et zoom subtil */
+.masonry-item:hover img {
+    opacity: 0.88;
+    transform: scale(1.015);
+}
+ 
+/* Curseur étoile sur les photos (cohérent avec le reste du site) */
+.masonry-item {
+    cursor: var(--cursor-star, crosshair);
+}
+ 
+ 
+/* ------------------------------------------------------------
+   LIGHTBOX — agrandissement au clic
+   Quand on clique une photo, elle s'affiche en grand
+   sur un fond sombre. Clic n'importe où pour fermer.
+------------------------------------------------------------ */
+#lightbox {
+    display: none;             /* caché par défaut */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.88);
+    z-index: 9000;             /* au-dessus de tout sauf le widget solaire */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;           /* indique qu'on peut cliquer pour fermer */
+}
+ 
+/* Quand la lightbox est active, on lui ajoute la classe "active" en JS */
+#lightbox.active {
+    display: flex;
+}
+ 
+#lightbox img {
+    max-width: 88vw;
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    display: block;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+}
+ 
+/* Croix de fermeture en haut à droite */
+#lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 32px;
+    font-family: Garamond, serif;
+    font-weight: 300;
+    line-height: 1;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    user-select: none;
+}
+#lightbox-close:hover {
+    opacity: 0.5;
+}
+ 
+ 
+/* ------------------------------------------------------------
+   RESPONSIVE
+   La grille adapte le nombre de colonnes à la taille d'écran.
+------------------------------------------------------------ */
+ 
+/* Tablette */
+@media (max-width: 1100px) {
+    .masonry-grid {
+        column-count: 2;
+        padding: 100px 24px 60px;
+    }
+}
+ 
+/* Mobile */
+@media (max-width: 600px) {
+    .masonry-grid {
+        column-count: 1;       /* une seule colonne sur téléphone */
+        padding: 80px 12px 40px;
+    }
+ 
+    /* Pas de lightbox sur mobile : trop petit */
+    #lightbox {
+        display: none !important;
+    }
+}
